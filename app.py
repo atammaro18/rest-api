@@ -20,7 +20,7 @@ class Equipment(Resource):
                 return {'message': "An equipment with name '{}' already exists".format(name)}, 400
         
         data = Equipment.parser.parse_args()
-        
+
         equipment = {'name': name, 'description': data['description']}
         equipments.append(equipment)
         return equipment, 201
@@ -51,4 +51,5 @@ class EquipmentList(Resource):
 api.add_resource(Equipment, '/equipment/<string:name>')  # http://127.0.0.1:7000/equipment/name
 api.add_resource(EquipmentList, '/equipments')
 
-app.run(port=7000, debug=True)
+if __name__ == "__main__":
+    app.run(port=7000, debug=True)
